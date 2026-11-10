@@ -2,7 +2,8 @@ let bufferRomOriginal = null;
 const LISTA_POKEMON = Array.from({ length: 386 }, (_, i) => i + 1);
 
 document.getElementById('rom-file').addEventListener('change', function(evento) {
-    const archivo = evento.target.files;
+    // CORRECCIÓN AQUÍ: Accedemos directamente al primer archivo seleccionado de la lista [0]
+    const archivo = evento.target.files[0];
     if (!archivo) return;
 
     const pesoEnMB = (archivo.size / 1024 / 1024).toFixed(2);
@@ -39,9 +40,9 @@ document.getElementById('btn-process').addEventListener('click', function() {
         const offsetInicial3 = 0x3F1248;
 
         try {
-            vistaDatos.setUint16(offsetInicial1, inicialesAleatorios, true);
-            vistaDatos.setUint16(offsetInicial2, inicialesAleatorios, true);
-            vistaDatos.setUint16(offsetInicial3, inicialesAleatorios, true);
+            vistaDatos.setUint16(offsetInicial1, inicialesAleatorios[0], true);
+            vistaDatos.setUint16(offsetInicial2, inicialesAleatorios[1], true);
+            vistaDatos.setUint16(offsetInicial3, inicialesAleatorios[2], true);
             console.log("Iniciales aleatorizados.");
         } catch (error) {
             console.error("Error al escribir iniciales:", error);
@@ -66,4 +67,3 @@ document.getElementById('btn-process').addEventListener('click', function() {
     enlaceDescarga.download = "pokemon_aleatorio.gba"; 
     enlaceDescarga.click();
 });
-                                                        

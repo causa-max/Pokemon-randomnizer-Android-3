@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomizer Pokémon Móvil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PokeRandomizer</h1>
+            <p>Edición Avanzada para Android</p>
+        </header>
+
+        <section class="upload-section">
+            <label for="rom-file" class="custom-file-upload">
+                📂 Cargar Archivo ROM
+            </label>
+            <input type="file" id="rom-file" accept=".gba,.nds">
+            <div id="file-info" class="file-info">Ninguna ROM seleccionada</div>
+        </section>
+
+        <section class="options-section">
+            
+            <div class="option-group">
+                <h2>Ajustes de Pokémon</h2>
+                
+                <div class="option-card">
+                    <label class="switch">
+                        <input type="checkbox" id="rand-starters">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="option-text">
+                        <h3>Pokémon Iniciales</h3>
+                        <p>Cambia los tres Pokémon iniciales elegibles.</p>
+                    </div>
+                </div>
+
+                <div class="option-card">
+                    <label class="switch">
+                        <input type="checkbox" id="rand-wild">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="option-text">
+                        <h3>Encuentros Salvajes</h3>
+                        <p>Aleatoriza la fauna en hierba, cuevas y agua.</p>
+                    </div>
+                </div>
+
+                <div class="option-card">
+                    <label class="switch">
+                        <input type="checkbox" id="rand-stats">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="option-text">
+                        <h3>Estadísticas Base</h3>
+                        <p>Baraja los valores base de cada especie de forma proporcional.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <h2>Entrenadores y Rivales</h2>
+                
+                <div class="option-card">
+                    <label class="switch">
+                        <input type="checkbox" id="rand-trainers">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="option-text">
+                        <h3>Equipos de Entrenadores</h3>
+                        <p>Modifica los Pokémon de los líderes de gimnasio y rivales.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <button id="btn-process" class="btn-main" disabled>⚡ Generar ROM Aleatoria</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log("Modo offline preparado."))
+                .catch(err => console.error("Error al activar modo offline", err));
+        }
+    </script>
+</body>
+</html>
 
